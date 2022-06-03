@@ -1,18 +1,20 @@
 package bowling.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class NormalFrame implements Frame {
 
-  private final List<Ball> balls = new ArrayList<>();
-  private boolean turnOver;
+  private final int number;
 
-  public void bowl(int score) {
-    new Ball(score);
+
+  public NormalFrame(int number) {
+    this.number = number;
   }
 
-  public boolean isTurnOver() {
-    return turnOver;
+  public Frame bowl(int fallenPin) {
+    Pin pin = new Pin(fallenPin);
+    if (pin.strike()) {
+      return new NormalFrame(number + 1);
+    }
+    return this;
   }
+
 }

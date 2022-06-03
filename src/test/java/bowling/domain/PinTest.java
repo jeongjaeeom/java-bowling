@@ -8,18 +8,18 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-class BallTest {
+class PinTest {
 
   @Test
-  @DisplayName("볼 생성")
+  @DisplayName("넘어진 볼링 핀 생성")
   void created() {
-    assertThat(new Ball("10")).isEqualTo(new Ball(10));
+    assertThat(new Pin("10")).isEqualTo(new Pin(10));
   }
 
-  @DisplayName("볼 점수 0 ~ 10점이 아닌 경우 예외 처리")
+  @DisplayName("넘어진 볼링 핀 0 ~ 10개 아닌 경우 예외 처리")
   @ParameterizedTest
   @ValueSource(ints = {-1, 11})
   void givenNegativeNumber_ShouldException(int input) {
-    assertThatIllegalArgumentException().isThrownBy(() -> new Ball(input));
+    assertThatIllegalArgumentException().isThrownBy(() -> new Pin(input));
   }
 }
